@@ -6,22 +6,31 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Produtos {
+  id_produto       Int                @id @default(autoincrement())
+  nome_produto     String
+  descricao        String
+  preco_unitario   Decimal
+  Entradas_Estoque Entradas_Estoque[]
+  Saidas_Estoque   Saidas_Estoque[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+model Entradas_Estoque {
+  id_entrada   Int      @id @default(autoincrement())
+  ProdutoId    Int
+  quantidade   Int
+  data_entrada DateTime
+  Produtos     Produtos @relation(fields: [ProdutoId], references: [id_produto])
+}
+
+model Saidas_Estoque {
+  id_saida   Int      @id
+  ProdutoId  Int
+  quantidade Int
+  data_saida DateTime
+  Produtos   Produtos @relation(fields: [ProdutoId], references: [id_produto])
 }
