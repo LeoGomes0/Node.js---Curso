@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "230fd77d-1690-4f82-958c-7d3958bc5c41",
+		"name": "API de Entradas_Produtos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32453685"
+	},
+	"item": [
+		{
+			"name": "Entrada",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantidade\": 10,\r\n    \"data_entrada\": \"25-10-2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/produtos/1/entrada",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"produtos",
+						"1",
+						"entrada"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
