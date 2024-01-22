@@ -6,7 +6,10 @@ const EntradaController = {
     registerEntrada: async (req: Request, res: Response) => {
         try {
 
-            const { id_produto, quantidade, data_entrada } = req.body;
+
+
+            const id_produto = +req.params.id
+            const { quantidade, data_entrada } = req.body;
 
             // Verificar se os campos necessários estão presentes
             if (!id_produto || !quantidade || !data_entrada) {
@@ -23,7 +26,8 @@ const EntradaController = {
             res.json(entrada);
 
         } catch (error) {
-            res.status(500).json({ message: 'Erro ao registrar entrada no estoque' });
+            res.status(500).json({ error });
+            console.log(error)
         }
     }
 

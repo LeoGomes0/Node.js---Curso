@@ -1,6 +1,5 @@
 import { Router } from "express";
 import ProdutoController from "../controllers/ProdutoController/ProdutoController";
-import entradaRoutes from "./entradaRoutes";
 
 const Route = Router();
 
@@ -18,8 +17,5 @@ Route.put('/produtos/:id', ProdutoController.updateProduto);
 
 // Rota para deletar um produto
 Route.delete('/produtos/:id', ProdutoController.deleteProduto);
-
-// Importa e usa as rotas de entrada de estoque do novo arquivo
-Route.use(entradaRoutes);
 
 export default Route;
