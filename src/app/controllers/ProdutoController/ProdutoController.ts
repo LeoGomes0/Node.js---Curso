@@ -5,7 +5,13 @@ const ProdutoController = {
 
     createProduto: async (req: Request, res: Response) => {
         try {
-            const novoProduto = await prisma.produtos.create(req.body);
+            const novoProduto = await prisma.produtos.create({
+                data: {
+                    nome_produto: req.body.nome_produto,
+                    descricao: req.body.descricao,
+                    preco_unitario: req.body.preco_unitario
+                }
+            });
             res.json(novoProduto);
         } catch (error) {
             res.status(500).send(error);
@@ -16,8 +22,12 @@ const ProdutoController = {
         try {
             const produtos = await prisma.produtos.findMany();
             res.json(produtos);
+            // validação da busca, caso não consiga encontrar, vai mostrar o status do erro e a mensagem em Json
+            if (produtos.length === 0) {
+                return res.status(404).json({ message: 'produto não encontrado!' })
+            }
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).send({ message: 'Erro ao buscar produtos' });
         }
     },
 
@@ -47,7 +57,16 @@ const ProdutoController = {
             if (!produto) {
                 return res.status(404).send('Produto não encontrado');
             }
-            await prisma.produtos.update(req.body);
+            await prisma.produtos.update({
+                where: {
+                    id_produto: +req.params.id
+                },
+                data: {
+                    nome_produto: req.body.nome_produto,
+                    descricao: req.body.descricao,
+                    preco_unitario: req.body.preco_unitario
+                }
+            });
             res.send('Produto atualizado com sucesso');
         } catch (error) {
             res.status(500).send(error);
