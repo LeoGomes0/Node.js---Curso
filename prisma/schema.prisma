@@ -21,16 +21,16 @@ model Produtos {
 
 model Entradas_Estoque {
   id_entrada   Int      @id @default(autoincrement())
-  ProdutoId    Int
+  id_produto   Int
   quantidade   Int
   data_entrada DateTime
-  Produtos     Produtos @relation(fields: [ProdutoId], references: [id_produto])
+  Produtos     Produtos @relation(fields: [id_produto], references: [id_produto])
 }
 
 model Saidas_Estoque {
-  id_saida   Int      @id
-  ProdutoId  Int
+  id_saida   Int      @id @default(autoincrement())
+  id_produto Int
   quantidade Int
   data_saida DateTime
-  Produtos   Produtos @relation(fields: [ProdutoId], references: [id_produto])
+  Produtos   Produtos @relation(fields: [id_produto], references: [id_produto])
 }

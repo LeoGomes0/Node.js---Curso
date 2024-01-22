@@ -1,11 +1,13 @@
 import express, { json } from "express"
-import Route from "../app/routes/routes";
+import Route from "../app/routes/produtosRoutes";
+import router from "../app/routes/entradaRoutes";
 
 const app = express();
 
 
 app.use(json());
 app.use(Route);
+app.use(router);
 
 
 
