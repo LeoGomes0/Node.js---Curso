@@ -8,7 +8,7 @@ const EntradaController = {
 
 
 
-            const id_produto = +req.params.id
+            const id_produto = +req.params.id;
             const { quantidade, data_entrada } = req.body;
 
             // Verificar se os campos necessários estão presentes
@@ -26,8 +26,8 @@ const EntradaController = {
             res.json(entrada);
 
         } catch (error) {
+            console.error("Erro ao tentar registrar entrada: " + error);
             res.status(500).json({ error });
-            console.log(error)
         }
     }
 
