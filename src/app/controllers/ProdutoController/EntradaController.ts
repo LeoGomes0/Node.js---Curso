@@ -3,10 +3,10 @@ import { Request, Response } from "express"
 
 const EntradaController = {
 
+
+    // Adicionar um registro / novo registro
     registerEntrada: async (req: Request, res: Response) => {
         try {
-
-
 
             const id_produto = +req.params.id;
             const { quantidade, data_entrada } = req.body;
@@ -31,6 +31,8 @@ const EntradaController = {
         }
     },
 
+
+    // Realizar a busca de todos os registros
     getAllRegistros: async (req: Request, res: Response) => {
 
         try {
@@ -43,11 +45,13 @@ const EntradaController = {
 
         } catch (error) {
             console.log(error)
-            console.error("Erro ao buscar todos os registros");
+            console.error("Erro ao buscar todos os registros de entradas");
             res.status(500).json({ error })
         }
     },
 
+
+    // Realizar a busca dos registros através do ID
     getRegisterByID: async (req: Request, res: Response) => {
 
         const id_produto = +req.params.id
@@ -69,6 +73,8 @@ const EntradaController = {
         }
     },
 
+
+    // Atualização dos Registros
     updateRegistro: async (req: Request, res: Response) => {
 
         try {
@@ -89,7 +95,7 @@ const EntradaController = {
 
             // Caso as informações do entrada seja nulo, irá retornar a mensagem de erro
             if (!entrada) {
-                return res.status(404).json({ message: "Registro não encontrado" })
+                return res.status(404).json({ message: "Registros de entradas não encontrado" })
             }
 
             await prisma.entradas_Estoque.update({
@@ -104,11 +110,45 @@ const EntradaController = {
             });
             res.json({ message: "Produto atualizado com sucesso" });
 
-    } catch(error) {
-        console.error("Erro ao tentar atualizar os registros");
-        res.status(500).json({ error });
+        } catch (error) {
+            console.error("Erro ao tentar atualizar as entradas");
+            res.status(500).json({ error });
+        }
+    },
+
+
+    // Deletar algum registro
+    deleteRegister: async (req: Request, res: Response) => {
+
+        try {
+
+            const id_entrada = +req.params.id
+
+            if (!id_entrada) {
+                return res.status(404).json({ message: "ID do produto não encontrado" });
+            }
+            const entrada = await prisma.entradas_Estoque.findFirst({
+                where: {
+                    id_entrada
+                }
+            });
+
+            if (!entrada) {
+                return res.status(404).json({ message: "Entrada não encontrada" });
+            }
+
+            await prisma.entradas_Estoque.delete({
+                where: {
+                    id_entrada
+                }
+            });
+            res.json({ message: "Registro de entradas deletado" });
+
+        } catch (error) {
+            console.error("Erro ao tentar deletar as entradas")
+            res.status(500).json({ error })
+        }
     }
-},
-};
+}
 
 export default EntradaController;

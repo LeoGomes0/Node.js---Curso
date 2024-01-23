@@ -100,7 +100,7 @@ const ProdutoController = {
             });
 
             if (!produto) {
-                return res.status(404).json('Produto não encontrato');
+                return res.status(404).json({ message: 'Produto não encontrato' });
             }
 
             await prisma.produtos.delete({
@@ -111,7 +111,7 @@ const ProdutoController = {
             res.send('Produto deletado com sucesso');
 
         } catch (error) {
-            res.status(500).json(error);
+            res.status(500).json({ error });
 
         }
     }
