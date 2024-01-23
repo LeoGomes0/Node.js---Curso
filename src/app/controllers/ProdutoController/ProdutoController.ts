@@ -16,7 +16,7 @@ const ProdutoController = {
             res.json(novoProduto);
 
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     },
 
@@ -32,7 +32,7 @@ const ProdutoController = {
             res.json(produtos);
 
         } catch (error) {
-            res.status(500).send({ message: 'Erro ao buscar produtos' });
+            res.status(500).json({ message: 'Erro ao buscar produtos' });
         }
     },
 
@@ -46,27 +46,28 @@ const ProdutoController = {
             });
 
             if (!produto) {
-                return res.status(404).send('Produto não encontrado');
+                return res.status(404).json('Produto não encontrado');
             }
             res.json(produto);
 
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     },
 
     updateProduto: async (req: Request, res: Response) => {
         try {
 
+            const id_produto = +req.params.id
+
             const produto = await prisma.produtos.findUnique({
                 where: {
-                    id_produto: +req.params.id
-
+                    id_produto
                 }
-            })
+            });
 
             if (!produto) {
-                return res.status(404).send('Produto não encontrado');
+                return res.status(404).json({ message: 'Produto não encontrado' });
             }
 
             await prisma.produtos.update({
@@ -85,7 +86,7 @@ const ProdutoController = {
             res.send('Produto atualizado com sucesso');
 
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     },
 
@@ -99,7 +100,7 @@ const ProdutoController = {
             });
 
             if (!produto) {
-                return res.status(404).send('Produto não encontrato');
+                return res.status(404).json('Produto não encontrato');
             }
 
             await prisma.produtos.delete({
@@ -110,7 +111,7 @@ const ProdutoController = {
             res.send('Produto deletado com sucesso');
 
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
 
         }
     }
