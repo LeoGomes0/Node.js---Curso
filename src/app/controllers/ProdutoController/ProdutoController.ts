@@ -16,7 +16,7 @@ const ProdutoController = {
             res.json(novoProduto);
 
         } catch (error) {
-            res.status(500).json(error);
+            res.status(500).json({ error });
         }
     },
 
@@ -46,12 +46,12 @@ const ProdutoController = {
             });
 
             if (!produto) {
-                return res.status(404).json('Produto não encontrado');
+                return res.status(404).json({ message: 'Produto não encontrado' });
             }
             res.json(produto);
 
         } catch (error) {
-            res.status(500).json(error);
+            res.status(500).json({ error });
         }
     },
 
@@ -86,7 +86,7 @@ const ProdutoController = {
             res.send('Produto atualizado com sucesso');
 
         } catch (error) {
-            res.status(500).json(error);
+            res.status(500).json({ error });
         }
     },
 
