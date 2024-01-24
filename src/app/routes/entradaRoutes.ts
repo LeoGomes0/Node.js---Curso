@@ -5,9 +5,17 @@ const Route = Router();
 
 // Rota para registrar entrada de estoque
 Route.post('/entrada/:id', EntradaController.registerEntrada);
+
+// Rota para obter todos os registros das entradas
 Route.get('/entrada', EntradaController.getAllRegistros);
+
+// Rota para obter um registro de entrada pelo ID do Produto
 Route.get('/entrada/:id', EntradaController.getRegisterByID);
+
+// Rota para atualizar um registro de entrada
 Route.put('/entrada/:id', EntradaController.updateRegistro);
+
+// Rota para deletar um registro de entrada
 Route.delete('/entrada/:id', EntradaController.deleteRegister);
 
 

@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 
 const ProdutoController = {
 
+    // Criação do Produto
     createProduto: async (req: Request, res: Response) => {
         try {
 
@@ -20,6 +21,7 @@ const ProdutoController = {
         }
     },
 
+    // Buscar todos os produtos
     getAllProdutos: async (req: Request, res: Response) => {
         try {
 
@@ -36,6 +38,7 @@ const ProdutoController = {
         }
     },
 
+    // Buscar Produtos pelo ID
     getProdutoById: async (req: Request, res: Response) => {
         try {
 
@@ -55,6 +58,7 @@ const ProdutoController = {
         }
     },
 
+    // Realizar a atualização do Produto criado
     updateProduto: async (req: Request, res: Response) => {
         try {
 
@@ -90,6 +94,7 @@ const ProdutoController = {
         }
     },
 
+    // Deletar Produto Criado
     deleteProduto: async (req: Request, res: Response) => {
         try {
 
