@@ -87,7 +87,7 @@ const ProdutoController = {
                 }
 
             });
-            res.send('Produto atualizado com sucesso');
+            res.json({ message: 'Produto atualizado com sucesso' });
 
         } catch (error) {
             res.status(500).json({ error });
@@ -113,7 +113,7 @@ const ProdutoController = {
                     id_produto: +req.params.id
                 }
             });
-            res.send('Produto deletado com sucesso');
+            res.json({ message: 'Produto deletado com sucesso' });
 
         } catch (error) {
             res.status(500).json({ error });
