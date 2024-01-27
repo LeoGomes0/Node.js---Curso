@@ -14,7 +14,7 @@ As seguintes tecnologia foram usadas na construção do projeto: <br>
 
 
 ## 🚀 Motivação do Projeto
-<p align="center">Este projeto foi esencial para minha evolução no Back-End, pois, mesmo estudando as tecnologias necessárias, não sabia muito bem como começar, porém, com as das dinâmicas das aulas, o meu professor solicitou um projeto, que seria a criação de uma API para apresentar em sala de aula.. Assim, me deixando mais motivado e realmente tendo a real cobrança, que seria de apresentar e exibir tudo que aprendi com nas aulas.</p> <br>
+<p align="center">Este projeto foi esencial para minha evolução no Back-End, pois, mesmo estudando as tecnologias necessárias, não sabia muito bem como começar, porém, com as das dinâmicas das aulas, o meu professor solicitou um projeto, que seria a criação de uma API para apresentar em sala de aula.. Assim, me deixando mais motivado e realmente tendo a real cobrança, que seria de apresentar e exibir tudo que aprendi com as aulas.</p> <br>
 
 ### Pré-requisitos
 
