@@ -27,10 +27,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/tgmarinho/nlw1](https://github.com/LeoGomes0/NodeJs_Curso.git
+$ git clone https://github.com/LeoGomes0/REST-API-Loja.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Nodejs_Curso
+$ cd REST-API-Loja
 
 # Abrir o XAMPP
 $ MySQL -> start
